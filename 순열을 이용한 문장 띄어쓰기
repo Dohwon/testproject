@@ -1,0 +1,18 @@
+import itertools
+
+sent = '최소 단위로 띄어쓰기한 문장을 입력하세요'
+sent = sent.split(' ')
+
+# Get indices for spaces
+N = range(len(sent) - 1)
+
+for i in N:
+    # Get all combinations where the space suits
+    # Note that this doesn't include the option of no spaces at all
+    for comb in itertools.combinations(N, i + 1):
+        # Add space to the end of each word
+        # with index contained in the combination 
+        listsent = [s + " " if j in comb else s for j, s in enumerate(sent)]
+        # Make the result a string or count the combinations if you like
+        tempsent = "".join(listsent)
+        print(tempsent)
